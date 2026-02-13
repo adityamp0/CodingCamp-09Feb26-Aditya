@@ -125,15 +125,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroTitle = document.querySelector('.hero h1');
 
     if (welcomeModal && heroTitle) {
-        // Only show if it's the home page and name not yet asked in this session
-        const hasSeenWelcome = sessionStorage.getItem('hasSeenWelcome');
-
-        if (!hasSeenWelcome) {
-            setTimeout(() => {
-                welcomeModal.classList.add('show');
-                welcomeModal.querySelector('.modal-content').classList.add('active');
-            }, 1000);
-        }
+        // Show modal on every page refresh
+        setTimeout(() => {
+            welcomeModal.classList.add('show');
+            welcomeModal.querySelector('.modal-content').classList.add('active');
+        }, 1000);
 
         const closeWelcome = (name) => {
             const finalName = name.trim() || "Guest";
@@ -152,7 +148,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 400);
 
             welcomeModal.classList.remove('show');
-            sessionStorage.setItem('hasSeenWelcome', 'true');
         };
 
         startBtn.addEventListener('click', () => closeWelcome(nameInput.value));
