@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TechSolutions - Providing cutting-edge software solutions for modern businesses.">
+    <title>TechSolutions | Modern Software Solutions</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <i class="fas fa-rocket"></i> TechSolutions
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="profile.html">Our Profile</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="services.html">Services</a></li>
+        </ul>
+        <div class="menu-toggle" id="mobile-menu">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>Welcome to Innovation</h1>
+        <p>We transform your ambitious ideas into reality through cutting-edge technology and human-centered design.
+            Join us at the forefront of digital transformation.</p>
+    </header>
+
+    <div class="banner-container reveal">
+        <div class="banner">
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80"
+                alt="TechSolutions Modern Office">
+        </div>
+    </div>
+
+    <main class="contact-section">
+        <div class="form-container reveal">
+            <h2>Let's Connect</h2>
+            <p style="margin-bottom: 2.5rem; color: var(--text-muted);">Have a visionary project in mind? Our team is
+                ready to bring it to life. Send us a message below.</p>
+
+            <form id="messageForm" novalidate>
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" placeholder="John Doe" required>
+                    <span class="error-text">Please enter your name</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="john@example.com" required>
+                    <span class="error-text">Please enter a valid email address</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Your Vision</label>
+                    <textarea id="message" rows="5" placeholder="Tell us about your project..." required></textarea>
+                    <span class="error-text">Please share your message or vision</span>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    <span>Send Message</span>
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </form>
+        </div>
+
+        <div class="result-display reveal" id="resultDisplay">
+            <div style="text-align: center; color: var(--text-muted); padding: 2rem;">
+                <i class="fas fa-inbox"
+                    style="font-size: 3.5rem; margin-bottom: 1.5rem; opacity: 0.2; color: var(--primary);"></i>
+                <p style="font-size: 1.1rem; font-weight: 500;">Awaiting your message</p>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem; opacity: 0.7;">Your submission summary will appear here
+                    once sent.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 <a href="https://github.com/adityamp0" target="_blank"
+                style="color: var(--primary); font-weight: 600;">adityamp0</a>. Crafted with Precision & Innovation.</p>
+        <div style="margin-top: 1rem; font-size: 0.8rem; opacity: 0.6;">
+            HTML5 &bull; CSS3 &bull; JavaScript
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
