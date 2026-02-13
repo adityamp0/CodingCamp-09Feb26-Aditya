@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     /* 2. Mobile Menu Toggle */
     const menuToggle = document.getElementById('mobile-menu');
     const navLinks = document.querySelector('.nav-links');
-    
+
     if (menuToggle) {
         menuToggle.addEventListener('click', () => {
             navLinks.classList.toggle('active');
@@ -111,26 +111,53 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
 
         messageForm.reset();
-        
+
         // Animated scroll to result
         setTimeout(() => {
             resultDisplay.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }, 100);
     }
 
-    /* 5. Minimalist Personalization (Replacement for prompt) */
-    // Instead of prompt, we check if name is in localStorage or just show a nice default
+    /* 5. Aesthetic Welcoming Speech */
+    const welcomeModal = document.getElementById('welcomeModal');
+    const startBtn = document.getElementById('startExperience');
+    const nameInput = document.getElementById('visitorName');
     const heroTitle = document.querySelector('.hero h1');
-    if (heroTitle && heroTitle.textContent.includes('Welcome')) {
-        const hours = new Date().getHours();
-        let greeting = "Welcome";
-        if (hours < 12) greeting = "Good Morning";
-        else if (hours < 18) greeting = "Good Afternoon";
-        else greeting = "Good Evening";
-        
-        // If we want to bring back the name, we could do it via a more subtle UI element
-        // but for "minimalist" and "tidy", the current hero title is already clean.
-        // Let's just update the content slightly for better copy.
-        // heroTitle.textContent = `${greeting}, We are TechSolutions`;
+
+    if (welcomeModal && heroTitle) {
+        // Only show if it's the home page and name not yet asked in this session
+        const hasSeenWelcome = sessionStorage.getItem('hasSeenWelcome');
+
+        if (!hasSeenWelcome) {
+            setTimeout(() => {
+                welcomeModal.classList.add('show');
+                welcomeModal.querySelector('.modal-content').classList.add('active');
+            }, 1000);
+        }
+
+        const closeWelcome = (name) => {
+            const finalName = name.trim() || "Guest";
+            const hours = new Date().getHours();
+            let greeting = "Welcome";
+
+            if (hours < 12) greeting = "Good Morning";
+            else if (hours < 18) greeting = "Good Afternoon";
+            else greeting = "Good Evening";
+
+            heroTitle.style.opacity = '0';
+            setTimeout(() => {
+                heroTitle.textContent = `${greeting}, ${finalName}!`;
+                heroTitle.style.opacity = '1';
+                heroTitle.style.animation = 'fadeInUp 0.8s ease-out';
+            }, 400);
+
+            welcomeModal.classList.remove('show');
+            sessionStorage.setItem('hasSeenWelcome', 'true');
+        };
+
+        startBtn.addEventListener('click', () => closeWelcome(nameInput.value));
+        nameInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') closeWelcome(nameInput.value);
+        });
     }
 });
